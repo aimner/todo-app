@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin flex($flex-direction, $justify-content, $align-items, $flex-wrap) {
   display: flex;
   flex-direction: $flex-direction;
@@ -24,3 +26,7 @@
   color: $color;
 }
 
+
+@mixin boxShadow {
+  box-shadow: 2rem 2rem 6rem $grey, -2rem -2rem 6rem $white;
+}
