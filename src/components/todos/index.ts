@@ -1,1 +1,1 @@
-import { Todos } from "./todos";
+export { Todos } from './todos'

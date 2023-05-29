@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { useGetTodosQuery } from "./app/api/todosApi";
-import { Todos } from "./components/todos/todos";
+import { Main } from "./components/main";
+import { useTheme } from "./hooks";
 
 function App() {
   // const { data, isError, isLoading } = useGetTodosQuery(null);
@@ -12,22 +12,14 @@ function App() {
   // if (isError) {
   //   return null;
   // }
-  // const x = 1;
 
-  const [darkTheme, setDarkTheme] = useState(false)
 
-  useEffect(() => {
-    if (darkTheme) {
-      document.querySelector('html')?.setAttribute('data-theme', 'dark')
-    } else {
-      document.querySelector('html')?.setAttribute('data-theme', 'light')
-    }
-  }, [darkTheme])
-  
+  // const { setDarkTheme } = useTheme();
+
   return (
     <>
-      <button onClick={() => setDarkTheme(v => !v)}>Change Theme</button>
-      <Todos/>
+      {/* <button onClick={() => setDarkTheme((v) => !v)}>Change Theme</button> */}
+      <Main />
     </>
   );
 }
