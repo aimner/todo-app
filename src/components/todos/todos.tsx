@@ -1,10 +1,21 @@
-import React from "react";
-import classes from './todos.module.scss'
+import React, { FC } from "react";
+import { Post } from "../../app/api/todosApi";
 
-export const Todos = () => {
+type PropsType = {
+  todos: Post[];
+};
+
+export const Todos: FC<PropsType> = ({ todos }) => {
   return (
-    <main className={classes.main}>
-
-    </main>
+    <section>
+      <ul>
+        {todos.map((item) => (
+          <li key={item.id}>
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };

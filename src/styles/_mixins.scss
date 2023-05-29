@@ -28,5 +28,5 @@
 
 
 @mixin boxShadow {
-  box-shadow: 2rem 2rem 6rem $grey, -2rem -2rem 6rem $white;
+  box-shadow: 2rem 2rem 6rem var(--grey), -2rem -2rem 6rem var(--white);
 }
