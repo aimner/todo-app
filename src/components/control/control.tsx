@@ -1,9 +1,9 @@
-import React from "react";
-import { useAddTodoMutation, useGetTodosQuery } from "../../app/api/todosApi";
+import { FC } from "react";
+import { useAddTodoMutation } from "../../app/api/todosApi";
 import { useForm } from "react-hook-form";
-import { Todo } from "../../types/todos";
+import { TodoType } from "../../types/todosTypes";
 
-export const Control = () => {
+export const Control: FC = () => {
   const {
     register,
     handleSubmit,
@@ -11,18 +11,18 @@ export const Control = () => {
     setValue,
     getValues,
     formState: { errors },
-  } = useForm<Omit<Todo, "id">>();
+  } = useForm<Omit<TodoType, "id">>();
 
-  const [addTodo, {}] = useAddTodoMutation()
+  const [addTodo, {}] = useAddTodoMutation();
 
-  const onSubmit = async (data: Omit<Todo, "id">) => {
+  const onSubmit = async (data: Omit<TodoType, "id">) => {
     console.log(data);
 
-    let newData: Omit<Todo, "id"> = {
-      ...data, 
-      done: true
-    }
-    await addTodo(newData)
+    let newData: Omit<TodoType, "id"> = {
+      ...data,
+      done: true,
+    };
+    await addTodo(newData);
   };
 
   return (
