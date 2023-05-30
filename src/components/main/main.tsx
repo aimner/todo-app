@@ -18,7 +18,7 @@ export const Main = () => {
   return (
     <main className={classes.main}>
       <h1 className={classes["main-title"]}>Todos App</h1>
-      <Todos todos={data}/>
+      <Todos/>
       <Control />
     </main>
   );

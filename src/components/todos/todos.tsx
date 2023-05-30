@@ -1,15 +1,18 @@
 import React, { FC } from "react";
-import { Post } from "../../app/api/todosApi";
+import { Post, useGetTodosQuery } from "../../app/api/todosApi";
 
-type PropsType = {
-  todos: Post[];
-};
 
-export const Todos: FC<PropsType> = ({ todos }) => {
+export const Todos: FC = () => {
+  const { data, isError, isLoading,  } = useGetTodosQuery(null);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <section>
       <ul>
-        {todos.map((item) => (
+        {data.map((item) => (
           <li key={item.id}>
             <h2>{item.title}</h2>
             <p>{item.text}</p>
