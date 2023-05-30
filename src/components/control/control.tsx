@@ -1,6 +1,7 @@
 import React from "react";
-import { Post, useAddTodoMutation, useGetTodosQuery } from "../../app/api/todosApi";
+import { useAddTodoMutation, useGetTodosQuery } from "../../app/api/todosApi";
 import { useForm } from "react-hook-form";
+import { Todo } from "../../types/todos";
 
 export const Control = () => {
   const {
@@ -10,14 +11,14 @@ export const Control = () => {
     setValue,
     getValues,
     formState: { errors },
-  } = useForm<Omit<Post, "id">>();
+  } = useForm<Omit<Todo, "id">>();
 
   const [addTodo, {}] = useAddTodoMutation()
 
-  const onSubmit = async (data: Omit<Post, "id">) => {
+  const onSubmit = async (data: Omit<Todo, "id">) => {
     console.log(data);
-    
-    let newData: Omit<Post, "id"> = {
+
+    let newData: Omit<Todo, "id"> = {
       ...data, 
       done: true
     }
