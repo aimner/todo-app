@@ -1,4 +1,4 @@
-@import './variables';
+@import "./variables";
 
 @mixin flex($flex-direction, $justify-content, $align-items, $flex-wrap) {
   display: flex;
@@ -26,7 +26,6 @@
   color: $color;
 }
 
-
 @mixin boxShadow {
   box-shadow: 2rem 2rem 6rem var(--grey), -2rem -2rem 6rem var(--white);
 }
@@ -44,8 +43,44 @@
   @include boxShadow;
 }
 
+// LABEL
+
+@mixin label($top, $left) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
+  transition: all 0.2s ease;
+}
+
+@mixin labelAnimation($Y) {
+  &:focus + label,
+  &:valid + label {
+    transform: scale(0.65) translateY($Y);
+  }
+}
+
+// BUTTONS
+
 @mixin button {
   border: none;
   outline: none;
   background-color: inherit;
+}
+
+@mixin deleteButton($right) {
+  @include button;
+  position: absolute;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-image: url("../assets/imgs/delete.png");
+  background-size: 1.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  right: $right;
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: var(--darkGrey);
+  }
 }

@@ -12,6 +12,7 @@ export const Control: FC = () => {
     watch,
     setValue,
     getValues,
+    resetField,
     formState: { errors },
   } = useForm<Omit<TodoType, "id">>();
 
@@ -37,21 +38,20 @@ export const Control: FC = () => {
             type="text"
             id="title"
             required
-            {...register("title", {
-             
-            })}
+            {...register("title", {})}
           />
           <label className={classes["control-form-titleBlock__label"]} htmlFor="title">
             Title
           </label>
-          <button className={classes["control-form-titleBlock__delete"]} type="button"></button>
-
+          <button
+            className={classes["control-form-titleBlock__delete"]}
+            onClick={() => resetField("title")}
+            type="button"></button>
         </div>
         <div>
           <textarea {...register("text", {})} />
         </div>
         <div>
-          {" "}
           <input type="radio" value="true" {...register("done", {})} />
           <input type="radio" value="false" {...register("done", {})} />
         </div>
