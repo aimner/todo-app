@@ -34,10 +34,28 @@
         border: none;
         background-color: var(--grey);
         border-radius: 2rem;
+        overflow-y: scroll;
         padding: 1.2rem 3.8rem 1.2rem 1.2rem;
         @include font("Montserrat", normal, 400, 1.1rem, 1rem, 0.1rem, var(--black));
         @include labelAnimation(-1.5rem);
-
+        &::-webkit-scrollbar {
+          background-color: inherit;
+          border-radius: 2rem;
+          width: .3rem;
+          height: 15rem;
+        
+        }
+        &::-webkit-scrollbar-button {
+          background-color: inherit;
+          display: none;
+        }
+        &::-webkit-scrollbar-trac {
+          background-color: blue;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: white;
+          border-radius: 2rem;
+        }
       }
 
       &__label {

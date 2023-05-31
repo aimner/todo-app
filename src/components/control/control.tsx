@@ -9,9 +9,7 @@ export const Control: FC = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    setValue,
-    getValues,
+    reset,
     resetField,
     formState: { errors },
   } = useForm<Omit<TodoType, "id">>();
@@ -19,13 +17,12 @@ export const Control: FC = () => {
   const [addTodo, {}] = useAddTodoMutation();
 
   const onSubmit = async (data: Omit<TodoType, "id">) => {
-    console.log(data);
-
     let newData: Omit<TodoType, "id"> = {
       ...data,
       done: true,
     };
     await addTodo(newData);
+    reset()
   };
 
   return (
@@ -52,6 +49,7 @@ export const Control: FC = () => {
           <textarea
             required
             className={classes["control-form-todoBlock__textArea"]}
+          value={'Todo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descripTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptiontion'}
             {...register("text", {})}
           />
           <label className={classes["control-form-todoBlock__label"]} htmlFor="text">
@@ -62,7 +60,7 @@ export const Control: FC = () => {
             onClick={() => resetField("text")}
             type="button"></button>
         </div>
-        <div>
+        <div className={classes["control-form-doneBlock"]}>
           <input type="radio" value="true" {...register("done", {})} />
           <input type="radio" value="false" {...register("done", {})} />
         </div>
