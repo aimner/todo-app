@@ -40,7 +40,6 @@
   background-color: var(--grey);
   border-radius: 2rem;
   @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
-  @include boxShadow;
 }
 
 // LABEL
@@ -49,7 +48,7 @@
   position: absolute;
   top: $top;
   left: $left;
-  @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
+  @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--richDarkGrey));
   transition: all 0.2s ease;
 }
 
@@ -68,7 +67,7 @@
   background-color: inherit;
 }
 
-@mixin deleteButton($right) {
+@mixin deleteButton($right, $top) {
   @include button;
   position: absolute;
   width: 2.4rem;
@@ -79,6 +78,7 @@
   background-position: center;
   background-repeat: no-repeat;
   right: $right;
+  top: $top;
   transition: all 0.2s ease;
   &:hover {
     background-color: var(--darkGrey);
