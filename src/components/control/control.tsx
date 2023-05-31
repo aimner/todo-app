@@ -48,8 +48,19 @@ export const Control: FC = () => {
             onClick={() => resetField("title")}
             type="button"></button>
         </div>
-        <div>
-          <textarea {...register("text", {})} />
+        <div className={classes["control-form-todoBlock"]}>
+          <textarea
+            required
+            className={classes["control-form-todoBlock__textArea"]}
+            {...register("text", {})}
+          />
+          <label className={classes["control-form-todoBlock__label"]} htmlFor="text">
+            Todo description
+          </label>
+          <button
+            className={classes["control-form-todoBlock__delete"]}
+            onClick={() => resetField("text")}
+            type="button"></button>
         </div>
         <div>
           <input type="radio" value="true" {...register("done", {})} />
