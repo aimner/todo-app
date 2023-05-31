@@ -2,15 +2,14 @@
 @import "./styles/mixins";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap');
 
-* {
-    transition: background-color .2s;
-}
-
 html {
   font-size: 62.5%;
   --lightGrey: #dcd6d6;
   --grey: #a4a4a4;
+  --darkGrey: #838282;
+  --richDarkGrey: #636060;
   --white: #ffffff;
+  --black: rgb(19, 18, 18);
 }
 
 html[data-theme="dark"] {

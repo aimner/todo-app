@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.control {
+  &__title {
+    @include font("Montserrat", normal, 600, 2rem, 1.3rem, 0.1rem, var(--black));
+  }
+  &-form {
+    @include flex(column, flex-start, center, nowrap);
+    gap: 1rem;
+    &-titleBlock {
+      position: relative;
+      @include flex(row, start, center, nowrap);
+      &__input {
+        border: none;
+        @include input(20rem, .9rem 3.6rem .9rem 1rem);
+      }
+      &__label {
+        position: absolute;
+        left: 1rem;
+        top: 1.1rem;
+        @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
+        transition: all 0.2s ease;
+      }
+      &__input:focus + &__label,
+      &__input:valid + &__label {
+        transform: scale(0.65) translateY(-1.6rem);
+      }
+      &__delete {
+        @include button;
+        position: absolute;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 50%;
+        background-image: url('../../assets/imgs/delete.png');
+   
+        background-size: 1.5rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        right: 1rem;
+        transition: all .2s ease;
+        &:hover {
+          background-color: var(--darkGrey);
+         
+        }
+      }
+    }
+  }
+}

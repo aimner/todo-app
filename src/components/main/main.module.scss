@@ -1,6 +1,5 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
-
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
 .main {
   width: 50rem;
@@ -8,6 +7,10 @@
   border-radius: 5rem;
   background: var(--lightGrey);
   @include boxShadow;
-  @include flex(column, center, center, nowrap)
-
+  @include flex(column, start, center, nowrap);
+  padding: 2rem 1.5rem;
+  gap: 3.5rem;
+  &__title {
+    @include font("Montserrat", normal, 600, 3rem, 1rem, 0.1rem, --black);
+  }
 }
