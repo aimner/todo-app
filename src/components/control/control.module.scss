@@ -24,7 +24,7 @@
         @include label(1.5rem, 1rem);
       }
       &__delete {
-        @include deleteButton(1rem, 0.7rem);
+        @include roundButton(1rem, 0.7rem, "../assets/imgs/delete.png");
       }
     }
 
@@ -46,7 +46,7 @@
       }
 
       &__delete {
-        @include deleteButton(1rem, 1.8rem);
+        @include roundButton(1rem, 1.8rem, "../assets/imgs/delete.png");
       }
     }
 

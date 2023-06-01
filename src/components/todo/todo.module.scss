@@ -9,9 +9,15 @@
   border-radius: 2rem;
   position: relative;
   min-width: 20rem;
-  &__delete {
-    @include deleteButton(1rem, 0.2rem);
+  &-buttons {
+    &__delete {
+      @include roundButton(1rem, 0.2rem, "../assets/imgs/delete.png");
+    }
+    &__edit {
+      @include roundButton(1rem, 2.4rem, "../assets/imgs/edit.png");
+    }
   }
+
   &__title {
     @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
     padding-bottom: 0.4rem;
@@ -26,6 +32,11 @@
     @include font("Montserrat", normal, 400, 1.1rem, 0.9rem, 0.1rem, var(--black));
     min-width: 14.5rem;
     max-width: 14.5rem;
+  }
 
+  &__textArea {
+    @include textArea;
+    width: 14.5rem;
+    height: 10rem;
   }
 }

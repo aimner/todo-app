@@ -98,14 +98,15 @@
   }
 }
 
-@mixin deleteButton($right, $top) {
+@mixin roundButton($right, $top, $imgUrl) {
   @include button;
   position: absolute;
   width: 2.7rem;
   height: 2.7rem;
   border-radius: 50%;
-  background-image: url("../assets/imgs/delete.png");
-  background-size: 1.5rem;
+  // background-image: url("../assets/imgs/delete.png");
+  background-image: url($imgUrl);
+  background-size: 1.9rem;
   background-position: center;
   background-repeat: no-repeat;
   right: $right;
