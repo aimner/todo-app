@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.todos {
+
+  &-list {
+    @include flex(row, flex-start, flex-start, wrap);
+    gap: 1rem;
+  }
+  
+}

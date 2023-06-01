@@ -2,13 +2,12 @@
 @import "../../styles/mixins";
 
 .main {
-  width: 50rem;
-
+  margin-inline: 2rem;
   border-radius: 5rem;
   background: var(--lightGrey);
   @include boxShadow;
   @include flex(column, start, center, nowrap);
-  padding: 2rem 1.5rem;
+  padding: 2rem 2.5rem;
   gap: 3.5rem;
   &__title {
     @include font("Montserrat", normal, 600, 3rem, 1rem, 0.1rem, --black);

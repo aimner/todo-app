@@ -3,6 +3,8 @@ import { useGetTodosQuery } from "../../app/api/todosApi";
 import React from "react";
 import { Todo } from "../todo";
 
+import classes from './todos.module.scss'
+
 export const Todos: FC = () => {
   const { data, isError, isLoading } = useGetTodosQuery(null);
   
@@ -11,8 +13,8 @@ export const Todos: FC = () => {
   }
 
   return (
-    <section>
-      <ul>
+    <section className={classes.todos}>
+      <ul className={classes['todos-list']}>
         {data.map((item) => (
           <React.Fragment key={item.id}>
             <Todo {...item} />

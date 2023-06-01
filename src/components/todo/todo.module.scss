@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.todo {
+  @include flex(column, flex-start, flex-start, nowrap);
+  gap: 1rem;
+  background-color: var(--grey);
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  position: relative;
+  min-width: 20rem;
+  &__delete {
+    @include deleteButton(1rem, 0.2rem);
+  }
+  &__title {
+    @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
+    padding-bottom: 0.4rem;
+    border-bottom: 0.1rem solid var(--richDarkGrey);
+    min-width: 14.5rem;
+    max-width: 14.5rem;
+
+    word-wrap: break-word;
+  }
+
+  &__description {
+    @include font("Montserrat", normal, 400, 1.1rem, 0.9rem, 0.1rem, var(--black));
+    min-width: 14.5rem;
+    max-width: 14.5rem;
+
+  }
+}
