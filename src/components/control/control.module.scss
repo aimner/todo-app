@@ -4,6 +4,8 @@
 .control {
   &__title {
     @include font("Montserrat", normal, 600, 2rem, 1.3rem, 0.1rem, var(--black));
+    margin-bottom: 1rem;
+    text-align: center;
   }
   &-form {
     @include flex(column, flex-start, center, nowrap);
@@ -12,9 +14,11 @@
     &-titleBlock {
       position: relative;
       @include flex(row, start, center, nowrap);
+
       &__input {
         @include input(20rem, 1.2rem 3.6rem 1.2rem 1rem);
         @include labelAnimation(-1.6rem);
+        box-shadow: $boxShadowForInputs;
       }
       &__label {
         @include label(1.5rem, 1rem);
@@ -31,6 +35,7 @@
       border-radius: 2rem;
       padding: 2rem;
       width: 35rem;
+      box-shadow: $boxShadowForInputs;
 
       &__textArea {
         @include textArea;
@@ -48,13 +53,10 @@
     &__submit {
       @include button;
       background-color: var(--grey);
-      @include font("Montserrat", normal, 400, 1.1rem, 1rem, 0.1rem, var(--black));
+      @include font("Montserrat", normal, 400, 1.4rem, 1rem, 0.1rem, var(--black));
       border-radius: 2rem;
-      padding: 1rem 1.5rem;
-      &:hover {
-        background-color: var(--richDarkGrey);
-        color: var(--lightGrey);
-      }
+      padding: 1.2rem 1.8rem;
+      box-shadow: $boxShadowForInputs;
     }
   }
 }

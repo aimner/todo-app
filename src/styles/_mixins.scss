@@ -87,15 +87,22 @@
 @mixin button {
   border: none;
   outline: none;
-  background-color: inherit;
   transition: all 0.2s ease;
+  @include font("Montserrat", normal, 400, 1.4rem, 1rem, 0.1rem, var(--black));
+  &:hover {
+    background-color: var(--darkGrey);
+    color: var(--lightGrey);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
 }
 
 @mixin deleteButton($right, $top) {
   @include button;
   position: absolute;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.7rem;
+  height: 2.7rem;
   border-radius: 50%;
   background-image: url("../assets/imgs/delete.png");
   background-size: 1.5rem;
@@ -103,8 +110,4 @@
   background-repeat: no-repeat;
   right: $right;
   top: $top;
-  
-  &:hover {
-    background-color: var(--darkGrey);
-  }
 }

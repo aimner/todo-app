@@ -22,7 +22,7 @@ export const Control: FC = () => {
       done: true,
     };
     await addTodo(newData);
-    reset()
+    reset();
   };
 
   return (
@@ -49,7 +49,6 @@ export const Control: FC = () => {
           <textarea
             required
             className={classes["control-form-todoBlock__textArea"]}
-          // value={'Todo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descripTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptionTodo descriptiontion'}
             {...register("text", {})}
           />
           <label className={classes["control-form-todoBlock__label"]} htmlFor="text">
@@ -60,10 +59,6 @@ export const Control: FC = () => {
             onClick={() => resetField("text")}
             type="button"></button>
         </div>
-        {/* <div className={classes["control-form-doneBlock"]}>
-          <input type="radio" value="true" {...register("done", {})} />
-          <input type="radio" value="false" {...register("done", {})} />
-        </div> */}
 
         <input type="submit" className={classes["control-form__submit"]} value="Add Todo" />
       </form>

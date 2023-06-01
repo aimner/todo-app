@@ -2,6 +2,8 @@ import { FC } from "react";
 import { TodoType } from "../../types/todosTypes";
 import { useDeleteTodoMutation } from "../../app/api/todosApi";
 
+
+
 type PropsType = TodoType;
 
 export const Todo: FC<PropsType> = ({ id, text, title }) => {
@@ -14,7 +16,7 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
   };
 
   return (
-    <li key={id}>
+    <li >
       <button type="button" onClick={() => onDeleteTodo(id)}>
         Delete
       </button>
