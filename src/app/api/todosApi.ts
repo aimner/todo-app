@@ -24,6 +24,14 @@ export const todosApi = createApi({
       }),
       invalidatesTags: [{ type: "Todos", id: "LIST" }],
     }),
+    editTodo: build.mutation<TodoType, TodoType>({
+      query: (body) => ({
+        url: `todos/${body.id}`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: [{ type: "Todos", id: "LIST" }],
+    }),
     deleteTodo: build.mutation<null, number>({
       query: (id) => ({
         url: `todos/${id}`,
@@ -34,4 +42,4 @@ export const todosApi = createApi({
   }),
 });
 
-export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation } = todosApi;
+export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation, useEditTodoMutation } = todosApi;
