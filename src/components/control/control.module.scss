@@ -17,7 +17,7 @@
         @include labelAnimation(-1.6rem);
       }
       &__label {
-        @include label(1.1rem, 1rem);
+        @include label(1.2rem, 1rem);
       }
       &__delete {
         @include deleteButton(1rem, .5rem);
@@ -27,17 +27,21 @@
     &-todoBlock {
       position: relative;
       @include flex(row, start, center, nowrap);
+      background-color: var(--grey);
+      border-radius: 2rem;
+      padding: 2rem;
+      width: 35rem;
       &__textArea {
         resize: none;
-        width: 30rem;
+        width: 28.5rem;
         height: 20rem;
         border: none;
         background-color: var(--grey);
         border-radius: 2rem;
         overflow-y: scroll;
-        padding: 1.2rem 3.8rem 1.2rem 1.2rem;
+        padding-inline: 1.2rem;
         @include font("Montserrat", normal, 400, 1.1rem, 1rem, 0.1rem, var(--black));
-        @include labelAnimation(-1.5rem);
+        @include labelAnimation(-2.8rem);
         &::-webkit-scrollbar {
           background-color: inherit;
           border-radius: 2rem;
@@ -45,25 +49,18 @@
           height: 15rem;
         
         }
-        &::-webkit-scrollbar-button {
-          background-color: inherit;
-          display: none;
-        }
-        &::-webkit-scrollbar-trac {
-          background-color: blue;
-        }
         &::-webkit-scrollbar-thumb {
-          background-color: white;
+          background-color: var(--richDarkGrey);
           border-radius: 2rem;
         }
       }
 
       &__label {
-        @include label(1.1rem, 1rem);
+        @include label(2.7rem, 2rem);
       }
 
       &__delete {
-        @include deleteButton(1rem, .6rem);
+        @include deleteButton(1rem, 1.8rem);
       }
     }
   }
