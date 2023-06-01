@@ -60,12 +60,12 @@ export const Control: FC = () => {
             onClick={() => resetField("text")}
             type="button"></button>
         </div>
-        <div className={classes["control-form-doneBlock"]}>
+        {/* <div className={classes["control-form-doneBlock"]}>
           <input type="radio" value="true" {...register("done", {})} />
           <input type="radio" value="false" {...register("done", {})} />
-        </div>
+        </div> */}
 
-        <input type="submit" value="Add Todo" />
+        <input type="submit" className={classes["control-form__submit"]} value="Add Todo" />
       </form>
     </section>
   );

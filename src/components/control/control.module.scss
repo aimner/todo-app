@@ -13,14 +13,14 @@
       position: relative;
       @include flex(row, start, center, nowrap);
       &__input {
-        @include input(20rem, 0.9rem 3.6rem 0.9rem 1rem);
+        @include input(20rem, 1.2rem 3.6rem 1.2rem 1rem);
         @include labelAnimation(-1.6rem);
       }
       &__label {
-        @include label(1.2rem, 1rem);
+        @include label(1.5rem, 1rem);
       }
       &__delete {
-        @include deleteButton(1rem, .5rem);
+        @include deleteButton(1rem, 0.7rem);
       }
     }
 
@@ -31,28 +31,9 @@
       border-radius: 2rem;
       padding: 2rem;
       width: 35rem;
+
       &__textArea {
-        resize: none;
-        width: 28.5rem;
-        height: 20rem;
-        border: none;
-        background-color: var(--grey);
-        border-radius: 2rem;
-        overflow-y: scroll;
-        padding-inline: 1.2rem;
-        @include font("Montserrat", normal, 400, 1.1rem, 1rem, 0.1rem, var(--black));
-        @include labelAnimation(-2.8rem);
-        &::-webkit-scrollbar {
-          background-color: inherit;
-          border-radius: 2rem;
-          width: .3rem;
-          height: 15rem;
-        
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: var(--richDarkGrey);
-          border-radius: 2rem;
-        }
+        @include textArea;
       }
 
       &__label {
@@ -61,6 +42,18 @@
 
       &__delete {
         @include deleteButton(1rem, 1.8rem);
+      }
+    }
+
+    &__submit {
+      @include button;
+      background-color: var(--grey);
+      @include font("Montserrat", normal, 400, 1.1rem, 1rem, 0.1rem, var(--black));
+      border-radius: 2rem;
+      padding: 1rem 1.5rem;
+      &:hover {
+        background-color: var(--richDarkGrey);
+        color: var(--lightGrey);
       }
     }
   }
