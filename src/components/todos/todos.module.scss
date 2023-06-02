@@ -4,7 +4,7 @@
 .todos {
 
   &-list {
-    @include flex(row, flex-start, flex-start, wrap);
+    @include flex(row, center, flex-start, wrap);
     gap: 1rem;
   }
   

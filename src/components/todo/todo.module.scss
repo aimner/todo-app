@@ -3,18 +3,23 @@
 
 .todo {
   @include flex(column, flex-start, flex-start, nowrap);
-  gap: 1rem;
+  gap: 1.5rem;
   background-color: var(--grey);
   padding: 1rem 1.5rem;
   border-radius: 2rem;
   position: relative;
-  min-width: 20rem;
+  min-width: 29rem;
+
+  &_saveChanges {
+    @include submitButton;
+  }
+
   &-buttons {
     &__delete {
       @include roundButton(1rem, 0.2rem, "../assets/imgs/delete.png");
     }
     &__edit {
-      @include roundButton(1rem, 2.4rem, "../assets/imgs/edit.png");
+      @include roundButton(1rem, 2.8rem, "../assets/imgs/edit.png");
     }
   }
 
@@ -22,21 +27,39 @@
     @include font("Montserrat", normal, 400, 1.3rem, 1rem, 0.1rem, var(--black));
     padding-bottom: 0.4rem;
     border-bottom: 0.1rem solid var(--richDarkGrey);
-    min-width: 14.5rem;
-    max-width: 14.5rem;
-
+    width: 22.5rem;
     word-wrap: break-word;
   }
 
   &__description {
-    @include font("Montserrat", normal, 400, 1.1rem, 0.9rem, 0.1rem, var(--black));
-    min-width: 14.5rem;
-    max-width: 14.5rem;
+    @include font("Montserrat", normal, 400, 1.1rem, 1.2rem, 0.1rem, var(--black));
+    width: 23.5rem;
+    word-wrap: break-word;
+  }
+  &__description--hideText {
+    @include hideText(12);
   }
 
-  &__textArea {
-    @include textArea;
-    width: 14.5rem;
-    height: 10rem;
+  &-editTextBlock {
+    width: 23.5rem;
+    height: 19.6rem;
+    background-color: var(--grey);
+    padding: 0.8rem 1rem;
+    border-radius: 2rem;
+    &__textArea {
+      @include textArea;
+      width: 100%;
+      height: 100%;
+      background-color: var(--grey);
+      border-radius: 2rem;
+    }
   }
+
+  &__editTitle {
+    @include input(23.5rem, 0.8rem 3.6rem 0.8rem 1rem);
+  }
+}
+
+.grey {
+  background-color: var(--richDarkGrey);
 }
