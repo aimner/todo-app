@@ -19,10 +19,11 @@ html[data-theme="dark"] {
 }
 
 #root {
-  height: 100vh;
-  width: 100vw;
+
+  
   @include flex(row, center, center, nowrap);
   // background-color: var(--white);
   background-color: gray;
+  padding-block: 4rem;
 
 }

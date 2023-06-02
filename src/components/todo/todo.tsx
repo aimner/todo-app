@@ -25,12 +25,18 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
   };
 
   const onEditTodo = () => {
+    if (editMode) {
+      setTodoValue(text)
+      setTodoTitle(title)
+    }
     setEditMode((v) => !v);
   };
 
   const saveChangesTodo = async () => {
-    await editTodo({ id, title: todoTitle, done: true, text: todoValue });
-    setEditMode(false);
+    if (todoValue && todoTitle) {
+      await editTodo({ id, title: todoTitle, done: true, text: todoValue });
+      setEditMode(false);
+    }
   };
 
   return (
@@ -41,6 +47,7 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
       })}>
       {editMode ? (
         <input
+          required
           value={todoTitle}
           onChange={(e) => setTodoTitle(e.target.value)}
           type="text"
@@ -52,6 +59,7 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
       {editMode ? (
         <div className={classes["todo-editTextBlock"]}>
           <textarea
+            required
             value={todoValue}
             onChange={(e) => setTodoValue(e.target.value)}
             className={classes["todo-editTextBlock__textArea"]}></textarea>
@@ -71,7 +79,7 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
         </button>
       ) : (
         <button className={classes.todo_saveChanges} onClick={(e) => setShowAll((v) => !v)}>
-          {showAll ? 'Hide' : 'Show all'}
+          {showAll ? "Hide" : "Show all"}
         </button>
       )}
       <div className={classes["todo-buttons"]}>
