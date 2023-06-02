@@ -4,15 +4,16 @@ import { useDeleteTodoMutation, useEditTodoMutation } from "../../app/api/todosA
 import classNames from "classnames/bind";
 
 import classes from "./todo.module.scss";
+import { SkeletonLoading } from "../skeletonLoading";
 
 type PropsType = TodoType;
 
 const cx = classNames.bind(classes);
 
 export const Todo: FC<PropsType> = ({ id, text, title }) => {
-  const [deleteTodo, {}] = useDeleteTodoMutation();
+  const [deleteTodo, {isLoading: deleteLoading}] = useDeleteTodoMutation();
 
-  const [editTodo, {}] = useEditTodoMutation();
+  const [editTodo, {isLoading: editLoading}] = useEditTodoMutation();
 
   const [editMode, setEditMode] = useState(false);
   const [showAll, setShowAll] = useState(false);
@@ -38,6 +39,10 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
       setEditMode(false);
     }
   };
+
+  if (deleteLoading || editLoading) {
+    return <SkeletonLoading item={6}/>
+  }
 
   return (
     <li

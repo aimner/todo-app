@@ -20,7 +20,7 @@ html[data-theme="dark"] {
 
 #root {
 
-  
+  min-height: 100vh;
   @include flex(row, center, center, nowrap);
   // background-color: var(--white);
   background-color: gray;

@@ -5,6 +5,7 @@ import { Todo } from "../todo";
 import ContentLoader from "react-content-loader";
 
 import classes from "./todos.module.scss";
+import { SkeletonLoading } from "../skeletonLoading";
 
 export const Todos: FC = () => {
   const { data, isError, isLoading } = useGetTodosQuery(null);
@@ -15,28 +16,16 @@ export const Todos: FC = () => {
     <section className={classes.todos}>
       <ul className={classes["todos-list"]}>
         {isLoading &&
-          arr.map((item) => (
-            <ContentLoader
-              speed={2}
-              width={290}
-              height={`2${item}0`}
-              viewBox={`0 0 290 2${item}0`}
-              backgroundColor="#a4a4a4"
-              foregroundColor="#636060">
-              <rect x="-1" y="0" rx="20" ry="20" width="290" height={`2${item}0`} />
-            </ContentLoader>
+          arr.map((item, id) => (
+            <React.Fragment key={id}>
+              <SkeletonLoading item={item} />
+            </React.Fragment>
           ))}
         {data?.map((item) => (
           <React.Fragment key={item.id}>
             <Todo {...item} />
           </React.Fragment>
         ))}
-        {data?.map((item) => (
-          <React.Fragment key={item.id}>
-            <Todo {...item} />
-          </React.Fragment>
-        ))}
-
       </ul>
     </section>
   );
