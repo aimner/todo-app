@@ -51,12 +51,7 @@
     }
 
     &__submit {
-      @include button;
-      background-color: var(--grey);
-      @include font("Montserrat", normal, 400, 1.4rem, 1rem, 0.1rem, var(--black));
-      border-radius: 2rem;
-      padding: 1.2rem 1.8rem;
-      box-shadow: $boxShadowForInputs;
+      @include submitButton;
     }
   }
 }
