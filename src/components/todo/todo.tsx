@@ -10,25 +10,30 @@ type PropsType = TodoType;
 
 const cx = classNames.bind(classes);
 
-export const Todo: FC<PropsType> = ({ id, text, title }) => {
-  const [deleteTodo, {isLoading: deleteLoading}] = useDeleteTodoMutation();
+export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
+  const [deleteTodo, { isLoading: deleteLoading }] = useDeleteTodoMutation();
 
-  const [editTodo, {isLoading: editLoading}] = useEditTodoMutation();
+  const [editTodo, { isLoading: editLoading }] = useEditTodoMutation();
 
   const [editMode, setEditMode] = useState(false);
   const [showAll, setShowAll] = useState(false);
 
   const [todoValue, setTodoValue] = useState(text);
   const [todoTitle, setTodoTitle] = useState(title);
+  const [todoStatus, setTodoStatus] = useState(done);
 
   const onDeleteTodo = async (id: number) => {
     await deleteTodo(id);
   };
 
+  const onChangeTodoStatus = () => {
+    if (editMode) setTodoStatus((v) => !v);
+  };
+
   const onEditTodo = () => {
     if (editMode) {
-      setTodoValue(text)
-      setTodoTitle(title)
+      setTodoValue(text);
+      setTodoTitle(title);
     }
     setEditMode((v) => !v);
   };
@@ -41,7 +46,7 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
   };
 
   if (deleteLoading || editLoading) {
-    return <SkeletonLoading item={6}/>
+    return <SkeletonLoading item={6} />;
   }
 
   return (
@@ -96,6 +101,19 @@ export const Todo: FC<PropsType> = ({ id, text, title }) => {
           className={classes["todo-buttons__edit"]}
           type="button"
           onClick={() => onEditTodo()}></button>
+        <div className={cx({
+          ["todo-buttons-statusSwitch"]: true,
+          ["todo-buttons-statusSwitch--off"]: !editMode,
+        })}>
+          <input
+            value={todoStatus ? "true" : "false"}
+            id={`todoStatus ${id}`}
+            checked={todoStatus}
+            className={classes.check}
+            onChange={onChangeTodoStatus}
+            type="checkbox"></input>
+          <label htmlFor={`todoStatus ${id}`}>Done</label>
+        </div>
       </div>
     </li>
   );
