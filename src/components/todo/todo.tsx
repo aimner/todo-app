@@ -34,13 +34,14 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
     if (editMode) {
       setTodoValue(text);
       setTodoTitle(title);
+      setTodoStatus(done)
     }
     setEditMode((v) => !v);
   };
 
   const saveChangesTodo = async () => {
     if (todoValue && todoTitle) {
-      await editTodo({ id, title: todoTitle, done: true, text: todoValue });
+      await editTodo({ id, title: todoTitle, done: todoStatus, text: todoValue });
       setEditMode(false);
     }
   };
@@ -106,13 +107,12 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
           ["todo-buttons-statusSwitch--off"]: !editMode,
         })}>
           <input
-            value={todoStatus ? "true" : "false"}
             id={`todoStatus ${id}`}
             checked={todoStatus}
             className={classes.check}
             onChange={onChangeTodoStatus}
             type="checkbox"></input>
-          <label htmlFor={`todoStatus ${id}`}>Done</label>
+          <label htmlFor={`todoStatus ${id}`}>done</label>
         </div>
       </div>
     </li>
