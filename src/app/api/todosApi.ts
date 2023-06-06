@@ -16,15 +16,11 @@ export const todosApi = createApi({
             ]
           : [{ type: "Todos", id: "LIST" }],
     }),
-    getTodo: build.query<TodoType[], number>({
-      query: (id) => "todos",
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: "Todos" as const, id })),
-              { type: "Todos", id: "LIST" },
-            ]
-          : [{ type: "Todos", id: "LIST" }],
+    getTodo: build.query<TodoType, number>({
+      query: (id) => {
+        return `todos/${id}`;
+      },
+
     }),
     addTodo: build.mutation<Omit<TodoType, "id">, Omit<TodoType, "id">>({
       query: (body) => ({
@@ -52,4 +48,5 @@ export const todosApi = createApi({
   }),
 });
 
-export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation, useEditTodoMutation } = todosApi;
+export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation, useEditTodoMutation, useLazyGetTodosQuery } =
+  todosApi;
