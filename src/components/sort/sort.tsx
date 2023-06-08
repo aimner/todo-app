@@ -5,28 +5,46 @@ import arrow from "../../assets/imgs/arrow.png";
 
 import classes from "./sort.module.scss";
 
-const cx = classNames.bind(classes)
+const cx = classNames.bind(classes);
 
-export const Sort: FC = () => {
-  const [openSelect, setOpenSelect] = useState(false);
+type PropsType = {
+  openSelect: boolean,
+  setOpenSelect: React.Dispatch<React.SetStateAction<boolean>>
+  refLink: React.RefObject<HTMLElement>
+}
 
+export const Sort: FC<PropsType> = ({openSelect, setOpenSelect, refLink}) => {
   const [activeSortTodoStatus, setActiveSortTodoStatus] = useState("All");
 
   const sortStatusArr = ["All", "Unfinished", "Completed"];
 
+  const onChooseSortStatus = (sortStatus: string) => {
+    setActiveSortTodoStatus(sortStatus);
+    setOpenSelect(false);
+  };
+
   return (
-    <section className={classes.sort}>
+    <section className={classes.sort} ref={refLink}>
       <div onClick={() => setOpenSelect((v) => !v)} className={classes["sort-select"]}>
-        <div>{activeSortTodoStatus}</div>
-        <img className={cx({
-          ['sort-select__img']: true,
-          ['sort-select__img--rotate']: openSelect
-        })} src={arrow} alt="arrow" />
+        <span>{activeSortTodoStatus}</span>
+        <img
+          className={cx({
+            ["sort-select__img"]: true,
+            ["sort-select__img--rotate"]: openSelect,
+          })}
+          src={arrow}
+          alt="arrow"
+        />
       </div>
       {openSelect && (
-        <ul className={classes["sort-select"]}>
+        <ul className={classes["sort-select-block"]}>
           {sortStatusArr.map((item) => (
-            <li key={item}>{item}</li>
+            <li
+              onClick={() => onChooseSortStatus(item)}
+              className={classes["sort-select-block__item"]}
+              key={item}>
+              {item}
+            </li>
           ))}
         </ul>
       )}

@@ -1,11 +1,12 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useAddTodoMutation } from "../../app/api/todosApi";
 import { useForm } from "react-hook-form";
 import { TodoType } from "../../types/todosTypes";
 
 import classes from "./control.module.scss";
 
-export const Control: FC = () => {
+
+export const Control: FC = React.memo(() => {
   const {
     register,
     handleSubmit,
@@ -64,4 +65,4 @@ export const Control: FC = () => {
       </form>
     </section>
   );
-};
+});

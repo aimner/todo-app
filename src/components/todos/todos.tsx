@@ -1,13 +1,12 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { useGetTodosQuery } from "../../app/api/todosApi";
-import React from "react";
 import { Todo } from "../todo";
 import { SkeletonLoading } from "../skeletonLoading";
 
 import classes from "./todos.module.scss";
 
 
-export const Todos: FC = () => {
+export const Todos: FC = React.memo(() => {
   const { data, isError, isFetching } = useGetTodosQuery(null);
 
   const arr = [1, 4, 3, 4, 2, 1, 6, 9, 0];
@@ -30,4 +29,4 @@ export const Todos: FC = () => {
       </ul>
     </section>
   );
-};
+});

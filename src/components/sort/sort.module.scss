@@ -4,15 +4,39 @@
 .sort {
   &-select {
     @include font("Montserrat", normal, 500, 1.6rem, 1.3rem, 0.1rem, var(--black));
-    @include flex(row, center, center, nowrap);
-    gap: 9rem;
+    @include flex(row, space-between, center, nowrap);
+
     background-color: var(--grey);
     padding: 1rem 1.2rem;
     border-radius: 2rem;
     cursor: pointer;
     box-shadow: $boxShadowForInputs;
     transition: 0.2s ease all;
-    max-width: 15rem;
+    min-width: 25rem;
+    max-width: 35rem;
+
+    &-block {
+      margin-top: 1rem;
+      @include flex(column, flex-start, center, nowrap);
+      background-color: var(--grey);
+      @include font("Montserrat", normal, 500, 1.6rem, 1.3rem, 0.1rem, var(--black));
+      gap: 1rem;
+      padding: 1rem 1.2rem 1.5rem;
+      border-radius: 2rem;
+      &__item {
+        transition: 0.2s ease all;
+        cursor: pointer;
+        padding-block: 0.7rem;
+        // border-radius: 1rem;
+        border-bottom: 1px solid var(--richDarkGrey);
+        width: 100%;
+        text-align: center;
+        &:hover {
+          color: var(--lightGrey);
+          border-color: var(--lightGrey);
+        }
+      }
+    }
 
     &__img {
       transition: 0.2s ease transform;
