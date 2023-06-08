@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.sort {
+  &-select {
+    @include font("Montserrat", normal, 500, 1.6rem, 1.3rem, 0.1rem, var(--black));
+    @include flex(row, center, center, nowrap);
+    gap: 9rem;
+    background-color: var(--grey);
+    padding: 1rem 1.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    box-shadow: $boxShadowForInputs;
+    transition: 0.2s ease all;
+    max-width: 15rem;
+
+    &__img {
+      transition: 0.2s ease transform;
+      transform: rotate(-90deg);
+      width: 2rem;
+      height: 2rem;
+    }
+    &__img--rotate {
+      transform: rotate(90deg);
+    }
+
+    &:hover {
+      background-color: var(--darkGrey);
+    }
+  }
+}
