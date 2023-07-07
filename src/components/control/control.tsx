@@ -4,7 +4,9 @@ import { useForm } from "react-hook-form";
 import { TodoType } from "../../types/todosTypes";
 
 import classes from "./control.module.scss";
+import { Button } from "../button/button";
 
+type InputNames = "title" | "done" | "text";
 
 export const Control: FC = React.memo(() => {
   const {
@@ -26,6 +28,10 @@ export const Control: FC = React.memo(() => {
     reset();
   };
 
+  const clearValueHandler = (inputName: InputNames) => {
+    resetField(inputName);
+  };
+
   return (
     <section className={classes.control}>
       <h2 className={classes.control__title}>Create Todo</h2>
@@ -41,10 +47,12 @@ export const Control: FC = React.memo(() => {
           <label className={classes["control-form-titleBlock__label"]} htmlFor="title">
             Title
           </label>
-          <button
-            className={classes["control-form-titleBlock__delete"]}
-            onClick={() => resetField("title")}
-            type="button"></button>
+          <Button
+            text=""
+            classname={classes["control-form-titleBlock__delete"]}
+            callback={() => clearValueHandler("title")}
+            type="button"
+          />
         </div>
         <div className={classes["control-form-todoBlock"]}>
           <textarea
@@ -55,13 +63,16 @@ export const Control: FC = React.memo(() => {
           <label className={classes["control-form-todoBlock__label"]} htmlFor="text">
             Todo description
           </label>
-          <button
-            className={classes["control-form-todoBlock__delete"]}
-            onClick={() => resetField("text")}
-            type="button"></button>
+          <Button
+            text=""
+            classname={classes["control-form-todoBlock__delete"]}
+            callback={() => clearValueHandler("text")}
+            type="button"
+          />
         </div>
 
         <input type="submit" className={classes["control-form__submit"]} value="Add Todo" />
+
       </form>
     </section>
   );

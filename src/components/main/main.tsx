@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { Todos } from "../todos";
 import { Control } from "../control";
 import { Sort } from "../sort";
@@ -8,7 +8,6 @@ import classes from "./main.module.scss";
 import { useLazyGetTodosQuery } from "../../app/api/todosApi";
 
 export const Main: FC = () => {
-  // const [openSelect, setOpenSelect] = useState(false);
   const { ref, isComponentVisible, setIsComponentVisible } = useClickOutside(false);
 
   const [getTodosSorted, { isFetching, data }] = useLazyGetTodosQuery();
