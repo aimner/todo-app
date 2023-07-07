@@ -6,8 +6,8 @@ export const todosApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "https://63565c319243cf412f82a6f0.mockapi.io/" }),
   tagTypes: ["Todos"],
   endpoints: (build) => ({
-    getTodos: build.query<TodoType[], null>({
-      query: () => "todos",
+    getTodos: build.query<TodoType[], string>({
+      query: (url) => `todos?${url}`,
       providesTags: (result) =>
         result
           ? [
@@ -15,12 +15,6 @@ export const todosApi = createApi({
               { type: "Todos", id: "LIST" },
             ]
           : [{ type: "Todos", id: "LIST" }],
-    }),
-    getTodo: build.query<TodoType, number>({
-      query: (id) => {
-        return `todos/${id}`;
-      },
-
     }),
     addTodo: build.mutation<Omit<TodoType, "id">, Omit<TodoType, "id">>({
       query: (body) => ({
@@ -48,5 +42,10 @@ export const todosApi = createApi({
   }),
 });
 
-export const { useGetTodosQuery, useAddTodoMutation, useDeleteTodoMutation, useEditTodoMutation, useLazyGetTodosQuery } =
-  todosApi;
+export const {
+  useGetTodosQuery,
+  useAddTodoMutation,
+  useDeleteTodoMutation,
+  useEditTodoMutation,
+  useLazyGetTodosQuery,
+} = todosApi;
