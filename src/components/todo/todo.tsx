@@ -5,6 +5,7 @@ import classNames from "classnames/bind";
 
 import classes from "./todo.module.scss";
 import { SkeletonLoading } from "../skeletonLoading";
+import { Button } from "../button/button";
 
 type PropsType = TodoType;
 
@@ -22,8 +23,8 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
   const [todoTitle, setTodoTitle] = useState(title);
   const [todoStatus, setTodoStatus] = useState(done);
 
-  const onDeleteTodo = async (id: number) => {
-    await deleteTodo(id);
+  const onDeleteTodo = () => {
+    deleteTodo(id);
   };
 
   const onChangeTodoStatus = () => {
@@ -34,7 +35,7 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
     if (editMode) {
       setTodoValue(text);
       setTodoTitle(title);
-      setTodoStatus(done)
+      setTodoStatus(done);
     }
     setEditMode((v) => !v);
   };
@@ -44,6 +45,10 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
       await editTodo({ id, title: todoTitle, done: todoStatus, text: todoValue });
       setEditMode(false);
     }
+  };
+
+  const changeEditingMode = () => {
+    setShowAll((v) => !v);
   };
 
   if (deleteLoading || editLoading) {
@@ -85,27 +90,38 @@ export const Todo: FC<PropsType> = ({ id, text, title, done }) => {
         </p>
       )}
       {editMode ? (
-        <button onClick={saveChangesTodo} className={classes.todo_saveChanges}>
-          Save changes
-        </button>
+        <Button
+          text="Save changes"
+          classname={classes.todo_saveChanges}
+          callback={saveChangesTodo}
+          type="button"
+        />
       ) : (
-        <button className={classes.todo_saveChanges} onClick={(e) => setShowAll((v) => !v)}>
-          {showAll ? "Hide" : "Show all"}
-        </button>
+        <Button
+          text={showAll ? "Hide" : "Show all"}
+          classname={classes.todo_saveChanges}
+          callback={changeEditingMode}
+          type="button"
+        />
       )}
       <div className={classes["todo-buttons"]}>
-        <button
-          className={classes["todo-buttons__delete"]}
+        <Button
+          text=""
+          classname={classes["todo-buttons__delete"]}
+          callback={onDeleteTodo}
           type="button"
-          onClick={() => onDeleteTodo(id)}></button>
-        <button
-          className={classes["todo-buttons__edit"]}
+        />
+        <Button
+          text=""
+          classname={classes["todo-buttons__edit"]}
+          callback={onEditTodo}
           type="button"
-          onClick={() => onEditTodo()}></button>
-        <div className={cx({
-          ["todo-buttons-statusSwitch"]: true,
-          ["todo-buttons-statusSwitch--off"]: !editMode,
-        })}>
+        />
+        <div
+          className={cx({
+            ["todo-buttons-statusSwitch"]: true,
+            ["todo-buttons-statusSwitch--off"]: !editMode,
+          })}>
           <input
             id={`todoStatus ${id}`}
             checked={todoStatus}

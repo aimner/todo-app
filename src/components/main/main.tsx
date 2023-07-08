@@ -1,20 +1,24 @@
-import { FC } from "react";
+import { FC, useCallback, useState } from "react";
 import { Todos } from "../todos";
 import { Control } from "../control";
 import { Sort } from "../sort";
 import { useClickOutside } from "../../hooks";
 
 import classes from "./main.module.scss";
-import { useLazyGetTodosQuery } from "../../app/api/todosApi";
+import { useGetTodosQuery } from "../../app/api/todosApi";
 
 export const Main: FC = () => {
   const { ref, isComponentVisible, setIsComponentVisible } = useClickOutside(false);
 
-  const [getTodosSorted, { isFetching, data }] = useLazyGetTodosQuery();
+  const [activeSortTodoStatus, setActiveSortTodoStatus] = useState("");
 
-  const onGetTodosHandler = (url: string) => {
-    getTodosSorted(url);
-  };
+  const {data, isFetching} = useGetTodosQuery(activeSortTodoStatus);
+
+  const onGetTodosHandler = useCallback((url: string) => {
+    setActiveSortTodoStatus(url)
+  }, []);
+
+
 
   return (
     <main className={classes.main}>

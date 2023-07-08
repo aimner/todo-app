@@ -17,17 +17,22 @@ type PropsType = {
   data: TodoType[] | undefined;
 };
 
+type SortStatusType = {
+  text: string;
+  query: string;
+};
+
 export const Sort: FC<PropsType> = ({ openSelect, setOpenSelect, refLink, getTodosQuery }) => {
   const [activeSortTodoStatus, setActiveSortTodoStatus] = useState("All");
 
-  const sortStatusArr = [
-    { text: "All", query: "" },
-    { text: "Unfinished", query: "false" },
-    { text: "Completed", query: "true" },
+  const sortStatusArr: SortStatusType[] = [
+    { text: "All", query: "done=" },
+    { text: "Unfinished", query: "done=false" },
+    { text: "Completed", query: "done=true" },
   ];
 
   const onChooseSortStatus = (sortStatus: string, query: string) => {
-    getTodosQuery(`done=${query}`);
+    getTodosQuery(query);
     setActiveSortTodoStatus(sortStatus);
     setOpenSelect(false);
   };
