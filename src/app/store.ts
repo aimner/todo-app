@@ -6,7 +6,7 @@ import { todosApi } from "./api/todosApi";
 
 export const store = configureStore({
   reducer: {
-    todos,
+    // todos,
     [todosApi.reducerPath]: todosApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(todosApi.middleware),
