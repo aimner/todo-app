@@ -3,4 +3,6 @@ export interface TodoType {
   title: string;
   done: boolean;
   text: string;
+  date: number;
+  favorites: boolean;
 }

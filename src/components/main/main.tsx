@@ -14,11 +14,9 @@ export const Main: FC = () => {
 
   const {data, isFetching} = useGetTodosQuery(activeSortTodoStatus);
 
-  const onGetTodosHandler = useCallback((url: string) => {
+  const onGetTodosHandler = (url: string) => {
     setActiveSortTodoStatus(url)
-  }, []);
-
-
+  };
 
   return (
     <main className={classes.main}>
@@ -31,7 +29,7 @@ export const Main: FC = () => {
         getTodosQuery={onGetTodosHandler}
         data={data}
       />
-      <Todos getTodosQuery={onGetTodosHandler} data={data} isFetching={isFetching} />
+      <Todos data={data} isFetching={isFetching} />
     </main>
   );
 };

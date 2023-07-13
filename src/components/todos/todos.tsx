@@ -7,12 +7,11 @@ import classes from "./todos.module.scss";
 import { TodoType } from "../../types/todosTypes";
 
 type TodosPropsType = {
-  getTodosQuery: (url: string) => void;
   data: TodoType[] | undefined;
   isFetching: boolean;
 };
 
-export const Todos: FC<TodosPropsType> = React.memo(({ getTodosQuery, data, isFetching }) => {
+export const Todos: FC<TodosPropsType> = React.memo(({data, isFetching }) => {
   const arr = [1, 4, 3, 4, 2, 1, 6, 9, 0];
 
   return (
@@ -26,7 +25,7 @@ export const Todos: FC<TodosPropsType> = React.memo(({ getTodosQuery, data, isFe
             ))
           : data?.map((item) => (
               <React.Fragment key={item.id}>
-                <Todo {...item} />
+              <Todo todo={item} />
               </React.Fragment>
             ))}
       </ul>

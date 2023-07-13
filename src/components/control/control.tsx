@@ -1,10 +1,10 @@
 import React, { FC } from "react";
+
+import { Button } from "../button/button";
+import { TodoType } from "../../types/todosTypes";
+import classes from "./control.module.scss";
 import { useAddTodoMutation } from "../../app/api/todosApi";
 import { useForm } from "react-hook-form";
-import { TodoType } from "../../types/todosTypes";
-
-import classes from "./control.module.scss";
-import { Button } from "../button/button";
 
 type InputNames = "title" | "done" | "text";
 
@@ -22,7 +22,8 @@ export const Control: FC = React.memo(() => {
   const onSubmit = async (data: Omit<TodoType, "id">) => {
     let newData: Omit<TodoType, "id"> = {
       ...data,
-      done: true,
+      date: Math.floor(new Date().getTime() / 1000),
+      done: false,
     };
     await addTodo(newData);
     reset();
